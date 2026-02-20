@@ -90,8 +90,8 @@ DATABASES = {
 }
 
 CSRF_TRUSTED_ORIGINS = [
-    "http://*.elasticbeanstalk.com",
-    "https://*.elasticbeanstalk.com",
+    'http://django-env.eba-ne3mawmz.us-west-2.elasticbeanstalk.com',
+    'https://django-env.eba-ne3mawmz.us-west-2.elasticbeanstalk.com',
 ]
 
 
