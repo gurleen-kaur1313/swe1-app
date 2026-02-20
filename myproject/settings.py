@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 import os
 from pathlib import Path
+import socket
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,6 +28,14 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+try:
+    hostname = socket.gethostname()
+    local_ip = socket.gethostbyname(hostname)
+    ALLOWED_HOSTS.append(local_ip)
+except Exception:
+    pass
+
+ALLOWED_HOSTS += ['.compute.internal', '.compute-1.amazonaws.com']
 
 # Application definition
 
