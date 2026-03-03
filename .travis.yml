@@ -1,0 +1,30 @@
+language: python
+python:
+  - "3.11"
+
+# Install dependencies
+install:
+  - pip install -r requirements.txt
+  - pip install black flake8 coverage coveralls
+
+# Run checks and tests
+script:
+  - black --check .
+  - flake8 . --count --max-line-length=88
+  - coverage run --source='.' manage.py test
+
+# Report coverage to Coveralls
+after_success:
+  - coveralls
+
+# Deploy to Elastic Beanstalk
+deploy:
+  provider: elasticbeanstalk
+  access_key_id: $AWS_ACCESS_KEY_ID
+  secret_access_key: $AWS_SECRET_ACCESS_KEY
+  region: "us-west-2"
+  app: "django-hello-app"
+  env: "django-env"
+  bucket_name: "elasticbeanstalk-us-west-2-709436855295" # Travis needs an S3 bucket to upload the zip
+  on:
+    branch: main
