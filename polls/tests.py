@@ -4,14 +4,16 @@ from django.utils import timezone
 from .models import Question
 from django.urls import reverse
 
+
 class QuestionIndexViewTests(TestCase):
     def test_no_questions(self):
         """
         If no questions exist, an appropriate message is displayed.
         """
-        response = self.client.get(reverse('polls:index'))
+        response = self.client.get(reverse("polls:index"))
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "No polls are available.")
+
 
 class QuestionModelTests(TestCase):
     def test_was_published_recently_with_future_question(self):
