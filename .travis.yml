@@ -15,7 +15,7 @@ script:
 
 # Report coverage to Coveralls
 after_success:
-  - coveralls
+  - coveralls --service=travis-ci
 
 # Deploy to Elastic Beanstalk
 deploy:
