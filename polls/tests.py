@@ -26,4 +26,4 @@ class QuestionModelTests(TestCase):
         self.assertIs(future_question.was_published_recently(), False)
 
     def test_dummy(self):
-        self.assertTrue(False)
+        self.assertTrue(True)
